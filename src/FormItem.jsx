@@ -5,6 +5,7 @@ console.log("🚀 ~ Options:", Options)
 
 export default function (props) {
   const { value, onChange = () => {} } = props
+  console.log("🚀 ~ value:", value)
   const { status, errors } = Form.Item.useStatus()
 
   const handleSelect = (changedValue, key) => {
@@ -19,14 +20,12 @@ export default function (props) {
       <Select options={Options}
         style={{width: 120}}
         value={value?.from}
-        defaultValue={9}
         onChange={(val) => {
           handleSelect(val, 'from')
       }}/>
       <Select options={Options}
         style={{width: 120}}
         value={value?.to}
-        defaultValue={10}
         onChange={(val) => {
           handleSelect(val, 'to')
         }}

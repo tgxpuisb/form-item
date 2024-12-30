@@ -8,6 +8,7 @@ function App() {
   const [form] = Form.useForm()
 
   const interval = Form.useWatch(['interval'], form)
+  console.log("🚀 ~ App ~ interval:", interval)
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,7 +17,9 @@ function App() {
   }, [interval])
 
   return (
-    <Form form={form}>
+    <Form form={form} initialValues={{
+      interval: {from: 9, to: 10}
+    }}>
       <Form.Item name="interval"
         noStyle
         rules={[
@@ -28,7 +31,7 @@ function App() {
               if (interval.from > interval.to) {
                 return Promise.reject('from must not large than to')
               }
-              if (interval.from = interval.to) {
+              if (interval.from === interval.to) {
                 return Promise.reject('from must not equal to')
               }
               return Promise.resolve()
